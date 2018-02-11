@@ -1,0 +1,21 @@
+{
+  "name": "node_graph",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src --out-dir dist/",
+    "dev": "npm run build && node dist/index.js",
+    "serve": "npm run build && node dist/serve.js"
+  },
+  "dependencies": {
+    "graphql": "^0.13.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "express": "^4.15.3",
+    "express-graphql": "^0.6.7"
+  }
+}

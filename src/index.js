@@ -1,14 +1,13 @@
-import {graphql} from 'graphql';
-import schema from './schema/index';
+import schema from './schema';
+import express from "express";
+import graphqlHTTP from "express-graphql";
 
-const query = `{
-    posts {
-        title
-    }
-}`
+const app = express();
 
-graphql(schema, query).then(response => {
-    console.log(JSON.stringify(response, null, 2));
-}).catch(err => {
-    console.log(err);
-});
+app.use('/graphql', graphqlHTTP({
+  schema: schema,
+  graphiql: true
+}));
+
+console.log('Starting server..');
+app.listen(4000);

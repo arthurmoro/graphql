@@ -13,7 +13,7 @@ var _FakeDatabase = require('../../FakeDatabase');
 exports.default = {
     posts: {
         type: new _graphql.GraphQLList(_Post.Post),
-        description: "Get a list of posts",
+        description: "Get a list of recent posts",
         args: {},
         resolve: function resolve() {
             return _FakeDatabase.fakeDatabase.getBlogPosts();

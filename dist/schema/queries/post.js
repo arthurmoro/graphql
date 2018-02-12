@@ -11,9 +11,9 @@ var _Post = require('../types/Post');
 var _FakeDatabase = require('../../FakeDatabase');
 
 exports.default = {
-    posts: {
+    post: {
         type: _Post.Post,
-        description: "Get a list of posts",
+        description: "Get a single post by id",
         args: {
             id: { type: new _graphql.GraphQLNonNull(_graphql.GraphQLInt) }
         },

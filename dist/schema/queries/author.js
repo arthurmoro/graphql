@@ -11,9 +11,9 @@ var _FakeDatabase = require('../../FakeDatabase');
 var _Author = require('../types/Author');
 
 exports.default = {
-    posts: {
+    author: {
         type: _Author.Author,
-        description: "Get a list of posts",
+        description: "Get a author by id",
         args: {
             id: { type: new _graphql.GraphQLNonNull(_graphql.GraphQLString) }
         },

@@ -1,28 +1,27 @@
-import {GraphQLSchema, GraphQLObjectType} from 'graphql';
-
-import posts from './queries/posts';
-import post from './queries/post';
-import author from './queries/author';
-import addComment from './mutations/addComment';
-import addPost from './mutations/addPost';
+import { GraphQLSchema, GraphQLObjectType } from 'graphql';
+import posts from './queries/posts'
+import post from './queries/post'
+import author from './queries/author'
+import addPost from './mutations/addPost'
+import addComment from './mutations/addComment'
 
 const schema = new GraphQLSchema({
     query: new GraphQLObjectType({
-        name: "Rootquery",
+        name: 'RootQuery',
         fields: () => ({
             ...posts,
-            ...post,
             ...author,
+            ...post,
         })
     }),
+
     mutation: new GraphQLObjectType({
-        name: "Rootmutation",
+        name: 'RootMutation',
         fields: () => ({
             ...addPost,
             ...addComment
         })
     })
-})
-
+});
 
 export default schema;

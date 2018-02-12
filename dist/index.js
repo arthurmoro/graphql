@@ -1,17 +1,25 @@
-'use strict';
+"use strict";
 
-var _graphql = require('graphql');
+var _schema = require("./schema");
 
-var _index = require('./schema/index');
+var _schema2 = _interopRequireDefault(_schema);
 
-var _index2 = _interopRequireDefault(_index);
+var _express = require("express");
+
+var _express2 = _interopRequireDefault(_express);
+
+var _expressGraphql = require("express-graphql");
+
+var _expressGraphql2 = _interopRequireDefault(_expressGraphql);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var query = '{\n    posts {\n        title\n    }\n}';
+var app = (0, _express2.default)();
 
-(0, _graphql.graphql)(_index2.default, query).then(function (response) {
-    console.log(JSON.stringify(response, null, 2));
-}).catch(function (err) {
-    console.log(err);
-});
+app.use('/graphql', (0, _expressGraphql2.default)({
+  schema: _schema2.default,
+  graphiql: true
+}));
+
+console.log('Starting server..');
+app.listen(4000);

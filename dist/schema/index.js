@@ -20,25 +20,26 @@ var _author = require('./queries/author');
 
 var _author2 = _interopRequireDefault(_author);
 
-var _addComment = require('./mutations/addComment');
-
-var _addComment2 = _interopRequireDefault(_addComment);
-
 var _addPost = require('./mutations/addPost');
 
 var _addPost2 = _interopRequireDefault(_addPost);
+
+var _addComment = require('./mutations/addComment');
+
+var _addComment2 = _interopRequireDefault(_addComment);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var schema = new _graphql.GraphQLSchema({
     query: new _graphql.GraphQLObjectType({
-        name: "Rootquery",
+        name: 'RootQuery',
         fields: function fields() {
-            return _extends({}, _posts2.default, _post2.default, _author2.default);
+            return _extends({}, _posts2.default, _author2.default, _post2.default);
         }
     }),
+
     mutation: new _graphql.GraphQLObjectType({
-        name: "Rootmutation",
+        name: 'RootMutation',
         fields: function fields() {
             return _extends({}, _addPost2.default, _addComment2.default);
         }

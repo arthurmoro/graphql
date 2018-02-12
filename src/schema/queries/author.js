@@ -4,9 +4,9 @@ import { Author } from '../types/Author';
 
 
 export default {
-    posts: {
+    author: {
         type: Author,
-        description: "Get a list of posts",
+        description: "Get a author by id",
         args: {
             id: {type: new GraphQLNonNull(GraphQLString) }
         },

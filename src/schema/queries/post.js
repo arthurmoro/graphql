@@ -4,9 +4,9 @@ import { fakeDatabase } from '../../FakeDatabase';
 
 
 export default {
-    posts: {
+    post: {
         type: Post,
-        description: "Get a list of posts",
+        description: "Get a single post by id",
         args: {
             id: {type: new GraphQLNonNull(GraphQLInt)}
         },

@@ -51,7 +51,7 @@ class FakeDatabase{
 
     getCommentsForPost(postId) {
         return this.comments.filter((comment) => {
-            return comment.postId === postId;
+            return parseInt(comment.postId) === parseInt(postId);
         });
     }
 

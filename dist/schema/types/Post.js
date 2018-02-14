@@ -21,13 +21,13 @@ var Post = exports.Post = new _graphql.GraphQLObjectType({
         title: { type: _graphql.GraphQLString },
         content: { type: _graphql.GraphQLString },
         author: {
-            type: _Author.Author,
+            type: new _graphql.GraphQLList(_Author.Author),
             resolve: function resolve(post) {
                 return _FakeDatabase.fakeDatabase.getAuthor(post.author);
             }
         },
         comments: {
-            type: _Comment.Comment,
+            type: new _graphql.GraphQLList(_Comment.Comment),
             resolve: function resolve(post) {
                 return _FakeDatabase.fakeDatabase.getCommentsForPost(post.id);
             }
@@ -35,9 +35,13 @@ var Post = exports.Post = new _graphql.GraphQLObjectType({
     }
 });
 
+//Objeto do tipo Input que será usado para executar mutations em nosso código.
 var PostInputType = exports.PostInputType = new _graphql.GraphQLInputObjectType({
+    //Nome do nosso input
     name: "PostInput",
+    //Campos
     fields: {
+        //Todos os nossos campos são do tipo string e não devem ser nulo
         title: { type: new _graphql.GraphQLNonNull(_graphql.GraphQLString) },
         content: { type: new _graphql.GraphQLNonNull(_graphql.GraphQLString) },
         auhtor: { type: new _graphql.GraphQLNonNull(_graphql.GraphQLString) }

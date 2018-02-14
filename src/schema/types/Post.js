@@ -11,20 +11,23 @@ export const Post = new GraphQLObjectType({
         title: {type: GraphQLString},
         content: {type: GraphQLString},
         author: {
-            type: Author,
+            type: new GraphQLList(Author),
             resolve: post => fakeDatabase.getAuthor(post.author)
         },
         comments: {
-            type: Comment,
+            type: new GraphQLList(Comment),
             resolve: post => fakeDatabase.getCommentsForPost(post.id)
         }
     }
 });
 
-
+//Objeto do tipo Input que será usado para executar mutations em nosso código.
 export const PostInputType = new GraphQLInputObjectType({
+    //Nome do nosso input
     name: "PostInput",
+    //Campos
     fields: {
+        //Todos os nossos campos são do tipo string e não devem ser nulo
         title: {type: new GraphQLNonNull(GraphQLString)},
         content: {type: new GraphQLNonNull(GraphQLString)},
         auhtor: {type: new GraphQLNonNull(GraphQLString)},

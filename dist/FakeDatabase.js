@@ -56,7 +56,7 @@ var FakeDatabase = function () {
         key: 'getCommentsForPost',
         value: function getCommentsForPost(postId) {
             return this.comments.filter(function (comment) {
-                return comment.postId === postId;
+                return parseInt(comment.postId) === parseInt(postId);
             });
         }
     }, {
